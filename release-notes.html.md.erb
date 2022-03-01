@@ -1,0 +1,475 @@
+---
+title: VMware Tanzu Application Service for Windows v2.11 Release Notes
+owner: Garden Windows
+---
+
+<% current_page.data.title = vars.windows_runtime_full + " " + vars.v_major_version + " Release Notes" %>
+
+This topic contains release notes for <%= vars.windows_runtime_full %> <%= vars.v_major_version %>.
+
+Because VMware uses the Percona Distribution for MySQL, expect a time lag between Oracle
+releasing a MySQL patch and VMware releasing <%= vars.windows_runtime_abbr %> containing that patch.
+
+<p class="note warning"><strong>Warning:</strong> Windows stemcells v2019.44 and later include a version of <code>tar</code> that is incompatible
+with winfs2019-release v2.33.1 and earlier. For more information, see <a href="#windows-stemcell-tar">Windows Stemcell v2019.44 is Incompatible with winfs2019-release v2.33.1 and Earlier</a> in <em>Known Issues</em>.</p>
+
+Before you install the tile, refer to the [Windows Stemcell Compatibility Matrix](./stemcells.html#compatibility).
+
+## <a id='releases'></a> Releases
+
+<%# DO NOT DELETE THIS LINE - robots use this to add new release notes %>
+
+### <a id='2.11.11'></a> 2.11.11
+
+**Release Date:** 02/28/2022
+
+* **[Feature Improvement]** Per Golang 1.17's new and stricter IP parsing standards, any IP addrs with leading zeros in any octets will result in a BOSH template failure to allow operators to remove the leading zeros and try again (affects properties fed into diego-release, garden-runc-release, winc-release, nats-release, and routing-release),.
+* **[Bug Fix]** Smoke tests support for TLSv1.3 only option
+* Bump diego to version `2.58.1`
+* Bump envoy-nginx to version `0.9.0`
+* Bump garden-runc to version `1.20.0`
+* Bump hwc-offline-buildpack to version `3.1.22`
+* Bump loggregator-agent to version `6.3.8`
+* Bump metrics-discovery to version `3.0.8`
+* Bump smoke-tests to version `4.5.0`
+
+<table border="1" class="nice">
+  <thead>
+    <tr>
+      <th>Component</th>
+      <th>Version</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td>windows2019 stemcell</td><td>2019.44</td></tr>
+    <tr><td>diego</td><td>2.58.1</td></tr>
+    <tr><td>envoy-nginx</td><td>0.9.0</td></tr>
+    <tr><td>event-log</td><td>0.9.0</td></tr>
+    <tr><td>garden-runc</td><td>1.20.0</td></tr>
+    <tr><td>hwc-offline-buildpack</td><td>3.1.22</td></tr>
+    <tr><td>loggregator-agent</td><td>6.3.8</td></tr>
+    <tr><td>metrics-discovery</td><td>3.0.8</td></tr>
+    <tr><td>smoke-tests</td><td>4.5.0</td></tr>
+    <tr><td>winc</td><td>2.2.0</td></tr>
+    <tr><td>windows-utilities</td><td>0.14.0</td></tr>
+    <tr><td>windowsfs-release</td><td>2.33.2</td></tr>
+  </tbody>
+</table>
+
+
+
+### <a id='2.11.10'></a> 2.11.10
+
+**Release Date:** 02/08/2022
+
+* **[Security Fix]** Diego - Bump containerd to v1.5.9 to fix CVE-2021-43816
+* **[Feature Improvement]** <%= vars.windows_runtime_abbr %> supports compiled releases
+* **[Feature Improvement]** Golang v1.17 contains stricter IP parsing standards, so syslog drains registered using user-provided services cannot contain IP addresses with leading zeros in any octets.
+* **[Bug Fix]** windowsfs-release compilation issue - Cannot extract through symlink
+* Bump diego to version `2.57.0`
+* Bump hwc-offline-buildpack to version `3.1.21`
+* Bump loggregator-agent to version `6.3.7`
+* Bump metrics-discovery to version `3.0.7`
+* Bump smoke-tests to version `4.4.0`
+* Bump windowsfs-release to version `2.33.2`
+
+<table border="1" class="nice">
+  <thead>
+    <tr>
+      <th>Component</th>
+      <th>Version</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td>windows2019 stemcell</td><td>2019.44</td></tr>
+    <tr><td>diego</td><td>2.57.0</td></tr>
+    <tr><td>envoy-nginx</td><td>0.7.0</td></tr>
+    <tr><td>event-log</td><td>0.9.0</td></tr>
+    <tr><td>garden-runc</td><td>1.19.30</td></tr>
+    <tr><td>hwc-offline-buildpack</td><td>3.1.21</td></tr>
+    <tr><td>loggregator-agent</td><td>6.3.7</td></tr>
+    <tr><td>metrics-discovery</td><td>3.0.7</td></tr>
+    <tr><td>smoke-tests</td><td>4.4.0</td></tr>
+    <tr><td>winc</td><td>2.2.0</td></tr>
+    <tr><td>windows-utilities</td><td>0.14.0</td></tr>
+    <tr><td>windowsfs-release</td><td>2.33.2</td></tr>
+  </tbody>
+</table>
+
+
+
+### <a id='2.11.9'></a> 2.11.9 - Withdrawn
+
+<p class="note warning"><strong> Warning:</strong> This release has been removed from VMware Tanzu Network due to a regression in Windows FS Injector 0.21.0.</p>
+
+**Release Date:** 12/15/2021
+
+<%= partial "/pcf/tas/known-issues/windows-stemcell-tar" %>
+
+* **[Bug Fix]** Diego - Envoy v1.19 uses the original TCP connection pool so that it can accept more than 1024 downstream connections
+* **[Bug Fix]** Smoke Tests uses specified domain for Isolation Segments
+* Bump diego to version `2.54.0`
+* Bump loggregator-agent to version `6.3.5`
+* Bump smoke-tests to version `4.3.1`
+
+<table border="1" class="nice">
+  <thead>
+    <tr>
+      <th>Component</th>
+      <th>Version</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td>windows2019 stemcell</td><td>~2019</td></tr>
+    <tr><td>diego</td><td>2.54.0</td></tr>
+    <tr><td>envoy-nginx</td><td>0.7.0</td></tr>
+    <tr><td>event-log</td><td>0.9.0</td></tr>
+    <tr><td>garden-runc</td><td>1.19.30</td></tr>
+    <tr><td>hwc-offline-buildpack</td><td>3.1.20</td></tr>
+    <tr><td>loggregator-agent</td><td>6.3.5</td></tr>
+    <tr><td>metrics-discovery</td><td>3.0.6</td></tr>
+    <tr><td>smoke-tests</td><td>4.3.1</td></tr>
+    <tr><td>winc</td><td>2.2.0</td></tr>
+    <tr><td>windows-utilities</td><td>0.14.0</td></tr>
+    <tr><td>windowsfs-release</td><td>2.31.0</td></tr>
+  </tbody>
+</table>
+
+
+
+### <a id='2.11.8'></a> 2.11.8
+
+**Release Date:** 11/23/2021
+
+<%= partial "/pcf/tas/known-issues/windows-stemcell-tar" %>
+
+* Bump diego to version `2.53.1`
+* Bump hwc-offline-buildpack to version `3.1.20`
+* Bump windowsfs-release to version `2.31.0`
+
+<table border="1" class="nice">
+  <thead>
+    <tr>
+      <th>Component</th>
+      <th>Version</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td>windows2019 stemcell</td><td>2019.0</td></tr>
+    <tr><td>diego</td><td>2.53.1</td></tr>
+    <tr><td>envoy-nginx</td><td>0.7.0</td></tr>
+    <tr><td>event-log</td><td>0.9.0</td></tr>
+    <tr><td>garden-runc</td><td>1.19.30</td></tr>
+    <tr><td>hwc-offline-buildpack</td><td>3.1.20</td></tr>
+    <tr><td>loggregator-agent</td><td>6.3.4</td></tr>
+    <tr><td>metrics-discovery</td><td>3.0.6</td></tr>
+    <tr><td>smoke-tests</td><td>4.3.0</td></tr>
+    <tr><td>winc</td><td>2.2.0</td></tr>
+    <tr><td>windows-utilities</td><td>0.14.0</td></tr>
+    <tr><td>windowsfs-release</td><td>2.31.0</td></tr>
+  </tbody>
+</table>
+### <a id='2.11.7'></a> 2.11.7
+
+**Release Date:** 10/19/2021
+
+<%= partial "/pcf/tas/known-issues/windows-stemcell-tar" %>
+
+* No BOSH release bumps
+
+<table border="1" class="nice">
+  <thead>
+    <tr>
+      <th>Component</th>
+      <th>Version</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td>windows2019 stemcell</td><td>2019.0</td></tr>
+    <tr><td>diego</td><td>2.53.0</td></tr>
+    <tr><td>envoy-nginx</td><td>0.7.0</td></tr>
+    <tr><td>event-log</td><td>0.9.0</td></tr>
+    <tr><td>garden-runc</td><td>1.19.30</td></tr>
+    <tr><td>hwc-offline-buildpack</td><td>3.1.18</td></tr>
+    <tr><td>loggregator-agent</td><td>6.3.4</td></tr>
+    <tr><td>metrics-discovery</td><td>3.0.6</td></tr>
+    <tr><td>smoke-tests</td><td>4.3.0</td></tr>
+    <tr><td>winc</td><td>2.2.0</td></tr>
+    <tr><td>windows-utilities</td><td>0.14.0</td></tr>
+    <tr><td>windowsfs-release</td><td>2.29.0</td></tr>
+  </tbody>
+</table>
+### <a id='2.11.6'></a> 2.11.6
+
+**Release Date:** 09/30/2021
+
+<%= partial "/pcf/tas/known-issues/windows-stemcell-tar" %>
+
+* **[Security Fix]** Fixes an issue where BBS socket connections could be kept alive unnecessarily
+* **[Feature Improvement]** Disable Diego container proxy ALPN
+* Bump diego to version `2.53.0`
+
+<table border="1" class="nice">
+  <thead>
+    <tr>
+      <th>Component</th>
+      <th>Version</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td>windows2019 stemcell</td><td>2019.0</td></tr>
+    <tr><td>diego</td><td>2.53.0</td></tr>
+    <tr><td>envoy-nginx</td><td>0.7.0</td></tr>
+    <tr><td>event-log</td><td>0.9.0</td></tr>
+    <tr><td>garden-runc</td><td>1.19.30</td></tr>
+    <tr><td>hwc-offline-buildpack</td><td>3.1.18</td></tr>
+    <tr><td>loggregator-agent</td><td>6.3.4</td></tr>
+    <tr><td>metrics-discovery</td><td>3.0.6</td></tr>
+    <tr><td>smoke-tests</td><td>4.3.0</td></tr>
+    <tr><td>winc</td><td>2.2.0</td></tr>
+    <tr><td>windows-utilities</td><td>0.14.0</td></tr>
+    <tr><td>windowsfs-release</td><td>2.29.0</td></tr>
+  </tbody>
+</table>
+### <a id='2.11.5'></a> 2.11.5
+
+**Release Date:** 09/17/2021
+
+<%= partial "/pcf/tas/known-issues/windows-stemcell-tar" %>
+
+* **[Bug Fix]** garden-runc - Fix handling reserved space on ext4 and generating bundle mounts when SMB volumes are present
+* Bump garden-runc to version `1.19.30`
+* Bump windowsfs-release to version `2.29.0`
+
+<table border="1" class="nice">
+  <thead>
+    <tr>
+      <th>Component</th>
+      <th>Version</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td>windows2019 stemcell</td><td>2019.0</td></tr>
+    <tr><td>diego</td><td>2.50.0</td></tr>
+    <tr><td>envoy-nginx</td><td>0.7.0</td></tr>
+    <tr><td>event-log</td><td>0.9.0</td></tr>
+    <tr><td>garden-runc</td><td>1.19.30</td></tr>
+    <tr><td>hwc-offline-buildpack</td><td>3.1.18</td></tr>
+    <tr><td>loggregator-agent</td><td>6.3.4</td></tr>
+    <tr><td>metrics-discovery</td><td>3.0.6</td></tr>
+    <tr><td>smoke-tests</td><td>4.3.0</td></tr>
+    <tr><td>winc</td><td>2.2.0</td></tr>
+    <tr><td>windows-utilities</td><td>0.14.0</td></tr>
+    <tr><td>windowsfs-release</td><td>2.29.0</td></tr>
+  </tbody>
+</table>
+### <a id='2.11.4'></a> 2.11.4
+
+**Release Date:** 09/09/2021
+
+<%= partial "/pcf/tas/known-issues/windows-stemcell-tar" %>
+
+* **[Bug Fix]** garden-runc - recover after cell restarts
+* Bump garden-runc to version `1.19.29`
+* Bump loggregator-agent to version `6.3.4`
+* Bump windowsfs-release to version `2.28.0`
+
+<table border="1" class="nice">
+  <thead>
+    <tr>
+      <th>Component</th>
+      <th>Version</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td>windows2019 stemcell</td><td>2019.0</td></tr>
+    <tr><td>diego</td><td>2.50.0</td></tr>
+    <tr><td>envoy-nginx</td><td>0.7.0</td></tr>
+    <tr><td>event-log</td><td>0.9.0</td></tr>
+    <tr><td>garden-runc</td><td>1.19.29</td></tr>
+    <tr><td>hwc-offline-buildpack</td><td>3.1.18</td></tr>
+    <tr><td>loggregator-agent</td><td>6.3.4</td></tr>
+    <tr><td>metrics-discovery</td><td>3.0.6</td></tr>
+    <tr><td>smoke-tests</td><td>4.3.0</td></tr>
+    <tr><td>winc</td><td>2.2.0</td></tr>
+    <tr><td>windows-utilities</td><td>0.14.0</td></tr>
+    <tr><td>windowsfs-release</td><td>2.28.0</td></tr>
+  </tbody>
+</table>
+
+### <a id='2.11.3'></a> 2.11.3
+
+**Release Date:** 07/15/2021
+
+<%= partial "/pcf/tas/known-issues/windows-stemcell-tar" %>
+
+* Bump garden-runc to version `1.19.28`
+* Bump hwc-offline-buildpack to version `3.1.18`
+* Bump metrics-discovery to version `3.0.6`
+* Bump windowsfs-release to version `2.27.0`
+
+<table border="1" class="nice">
+  <thead>
+    <tr>
+      <th>Component</th>
+      <th>Version</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td>windows2019 stemcell</td><td>2019.0</td></tr>
+    <tr><td>diego</td><td>2.50.0</td></tr>
+    <tr><td>envoy-nginx</td><td>0.7.0</td></tr>
+    <tr><td>event-log</td><td>0.9.0</td></tr>
+    <tr><td>garden-runc</td><td>1.19.28</td></tr>
+    <tr><td>hwc-offline-buildpack</td><td>3.1.18</td></tr>
+    <tr><td>loggregator-agent</td><td>6.3.3</td></tr>
+    <tr><td>metrics-discovery</td><td>3.0.6</td></tr>
+    <tr><td>smoke-tests</td><td>4.3.0</td></tr>
+    <tr><td>winc</td><td>2.2.0</td></tr>
+    <tr><td>windows-utilities</td><td>0.14.0</td></tr>
+    <tr><td>windowsfs-release</td><td>2.27.0</td></tr>
+  </tbody>
+</table>
+### <a id='2.11.2'></a> 2.11.2
+
+**Release Date:** 06/22/2021
+
+<%= partial "/pcf/tas/known-issues/windows-stemcell-tar" %>
+
+* **[Security Fix]** Bump some dependencies to resolve security vulnerabilities
+* Bump loggregator-agent to version `6.3.3`
+* Bump metrics-discovery to version `3.0.5`
+
+<table border="1" class="nice">
+  <thead>
+    <tr>
+      <th>Component</th>
+      <th>Version</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td>windows2019 stemcell</td><td>2019.0</td></tr>
+    <tr><td>diego</td><td>2.50.0</td></tr>
+    <tr><td>envoy-nginx</td><td>0.7.0</td></tr>
+    <tr><td>event-log</td><td>0.9.0</td></tr>
+    <tr><td>garden-runc</td><td>1.19.25</td></tr>
+    <tr><td>hwc-offline-buildpack</td><td>3.1.13</td></tr>
+    <tr><td>loggregator-agent</td><td>6.3.3</td></tr>
+    <tr><td>metrics-discovery</td><td>3.0.5</td></tr>
+    <tr><td>smoke-tests</td><td>4.3.0</td></tr>
+    <tr><td>winc</td><td>2.2.0</td></tr>
+    <tr><td>windows-utilities</td><td>0.14.0</td></tr>
+    <tr><td>windowsfs-release</td><td>2.26.0</td></tr>
+  </tbody>
+</table>
+### <a id='2.11.1'></a> 2.11.1
+
+**Release Date:** 05/27/2021
+
+<%= partial "/pcf/tas/known-issues/windows-stemcell-tar" %>
+
+* See [Known Issues](#known-issues).
+* **[Feature Improvement]** Patch versions can be upgraded without a stemcell upgrade
+* **[Bug Fix]** Smoke Test allows the operator to provide the apps_domain property when deploying TAS and also properly configures user provided space when deploying an isolation segment
+* Bump diego to version `2.50.0`
+* Bump garden-runc to version `1.19.25`
+* Bump loggregator-agent to version `6.2.1`
+* Bump smoke-tests to version `4.3.0`
+* Bump windowsfs-release to version `2.26.0`
+
+<table border="1" class="nice">
+  <thead>
+    <tr>
+      <th>Component</th>
+      <th>Version</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td>windows2019 stemcell</td><td>2019.0</td></tr>
+    <tr><td>diego</td><td>2.50.0</td></tr>
+    <tr><td>envoy-nginx</td><td>0.7.0</td></tr>
+    <tr><td>event-log</td><td>0.9.0</td></tr>
+    <tr><td>garden-runc</td><td>1.19.25</td></tr>
+    <tr><td>hwc-offline-buildpack</td><td>3.1.13</td></tr>
+    <tr><td>loggregator-agent</td><td>6.2.1</td></tr>
+    <tr><td>metrics-discovery</td><td>3.0.3</td></tr>
+    <tr><td>smoke-tests</td><td>4.3.0</td></tr>
+    <tr><td>winc</td><td>2.2.0</td></tr>
+    <tr><td>windows-utilities</td><td>0.14.0</td></tr>
+    <tr><td>windowsfs-release</td><td>2.26.0</td></tr>
+  </tbody>
+</table>
+
+
+
+### <a id='2.11.0'></a> 2.11.0
+
+**Release Date:** March 30, 2021
+
+<%= partial "/pcf/tas/known-issues/windows-stemcell-tar" %>
+
+<table border="1" class="nice">
+  <thead>
+    <tr>
+      <th>Component</th>
+      <th>Version</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td>windows2019 stemcell</td><td>2019.32</td></tr>
+    <tr><td>diego</td><td>2.49.0</td></tr>
+    <tr><td>envoy-nginx</td><td>0.7.0</td></tr>
+    <tr><td>event-log</td><td>0.9.0</td></tr>
+    <tr><td>garden-runc</td><td>1.19.18</td></tr>
+    <tr><td>hwc-offline-buildpack</td><td>3.1.13</td></tr>
+    <tr><td>loggregator-agent</td><td>6.2.0</td></tr>
+    <tr><td>metrics-discovery</td><td>3.0.3</td></tr>
+    <tr><td>smoke-tests</td><td>2.2.0</td></tr>
+    <tr><td>winc</td><td>2.2.0</td></tr>
+    <tr><td>windows-utilities</td><td>0.14.0</td></tr>
+    <tr><td>windowsfs-release</td><td>2.23.0</td></tr>
+  </tbody>
+</table>
+
+
+## <a id='upgrade'></a> How to Upgrade
+
+The <%= vars.windows_runtime_abbr %> <%= vars.v_major_version %> tile is available with the release of <%= vars.ops_manager %> v2.10.
+For more information, see the [<%= vars.ops_manager %>](https://docs.pivotal.io/ops-manager/2-10/index.html) documentation.
+
+To use the <%= vars.windows_runtime_abbr %> <%= vars.v_major_version %> tile, you must install <%= vars.ops_manager %> v2.10 and <%= vars.app_runtime_full %> (<%= vars.app_runtime_abbr %>) <%= vars.v_major_version %> or later.
+
+
+## <a id='new-features'></a> New Features in <%= vars.windows_runtime_abbr %> <%= vars.v_major_version %>
+
+There are no new features in this release of <%= vars.windows_runtime_abbr %>.
+
+
+## <a id='breaking-changes'></a> Breaking Changes
+
+There are no breaking changes in this release of <%= vars.windows_runtime_abbr %>.
+
+
+## <a id='known-issues'></a> Known Issues
+
+See the following <%= vars.windows_runtime_abbr %> <%= vars.v_major_version %> known issues:
+
+### <a id='no-stemcell-bump'></a>Upgrades Fail When the Stemcell Does Not Change
+
+If you upgrade to a version of <%= vars.windows_runtime_abbr %> that uses the same stemcell, <%= vars.windows_runtime_abbr %> can fail to create containers, causing the deployment to fail.
+If there are stemcell changes or if the Microsoft base layer changes, this error is unlikely to occur.
+
+For more information, see [Failure to create containers when upgrading with shared Microsoft base image](https://community.pivotal.io/s/article/knowledge-base-failure-to-create-containers-when-upgrading-with-shared-microsoft-base-image) in the VMware Tanzu Knowledge Base.
+
+### <a id='extra-failing-smoke-tests'></a>Smoke Tests Fail when Isolation Segment in Foundation
+
+The Smoke Test errand runs extra, failing tests when <%= vars.windows_runtime_abbr %> is deployed with <%= vars.segment_runtime_full %>. They are "Compute isolation disabled" and "Application Workflow Linux Applications".
+
+To work around this issue, disable Smoke Tests. For more information, see [Windows Tile smoke-tests fails for isolation segment segments](https://community.pivotal.io/s/article/5004y00001iTlFg1635513986409) in the VMware Tanzu Knowledge Base.
+
+### <a id='windows-stemcell-tar'></a>Windows Stemcell v2019.44 is Incompatible with winfs2019-release v2.33.1 and Earlier
+
+Windows stemcells v2019.44 and later include a newer version of `tar` that is incompatible
+with winfs2019-release v2.33.1 and earlier.
+<%= vars.windows_runtime_abbr %> deployments that use Windows stemcells v2019.44 and later cannot untar winfs2019-release v2.33.1 and earlier.
+Compatible Windows stemcells for this winfs2019-release include v2019.0 through v2019.43.
